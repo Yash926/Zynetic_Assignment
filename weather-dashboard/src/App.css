@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -30,6 +30,67 @@
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Weather icon animations */
+.weather-icon {
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.weather-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Weather conditions background effects */
+.weather-card.clear-sky {
+  background: linear-gradient(to bottom right, #87CEEB, #1E90FF);
+  color: white;
+}
+
+.weather-card.cloudy {
+  background: linear-gradient(to bottom right, #B0C4DE, #708090);
+  color: white;
+}
+
+.weather-card.rain {
+  background: linear-gradient(to bottom right, #4682B4, #2F4F4F);
+  color: white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rain-animation {
+    animation: rain 10s linear infinite;
+  }
+}
+
+@keyframes rain {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 20% 100%;
   }
 }
 
