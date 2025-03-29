@@ -13,7 +13,6 @@ const Forecast = ({ forecast }) => {
 
   const forecastData = Object.values(dailyData).slice(0, 5)
 
-  // Ensure only day icons are used
   const getDayIcon = (iconCode) => iconCode.replace('n', 'd');
 
   return (
