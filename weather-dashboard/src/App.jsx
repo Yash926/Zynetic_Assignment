@@ -8,7 +8,7 @@ import RecentSearches from './components/RecentSearches'
 import Forecast from './components/Forecast'
 import { motion } from 'framer-motion'
 import { fetchWeatherData, fetchForecastData } from './services/weatherService'
-import { RefreshIcon, SunIcon } from './utils/icons'
+import { RefreshIcon, SunIcon, TrashIcon } from './utils/icons' // Import the TrashIcon
 import './App.css'
 
 function App() {
@@ -70,6 +70,10 @@ function App() {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light')
   }
 
+  const clearRecentSearches = () => {
+    setRecentSearches([]);
+  };
+
   return (
     <div className="min-h-screen p-4 md:p-8 transition-colors duration-200">
       <motion.div
@@ -103,7 +107,18 @@ function App() {
         <SearchBar onSearch={handleSearch} />
         
         {recentSearches.length > 0 && (
-          <RecentSearches searches={recentSearches} onSelect={handleSearch} />
+          <div className="mb-6">
+            <div className="flex justify-between items-center">
+              <RecentSearches searches={recentSearches} onSelect={handleSearch} />
+              <button
+                onClick={clearRecentSearches}
+                className="btn-secondary flex items-center justify-center p-2 rounded-full"
+                aria-label="Clear Recent Searches"
+              >
+                <TrashIcon className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
         )}
         
         {loading && <Loader />}
